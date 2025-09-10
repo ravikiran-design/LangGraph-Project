@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Weather Report — {{ location }}</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <a href="/" class="back">← Back</a>
+      <h1>Weather Report — {{ data.city if data.ok else location }}</h1>
+
+      {% if not data.ok %}
+        <div class="error">{{ data.error }}</div>
+      {% else %}
+        <div class="card">
+          <div class="row"><span>City</span><strong>{{ data.city }}</strong></div>
+          <div class="row"><span>Temperature</span><strong>{{ data.current.temperature }}°C</strong></div>
+          <div class="row"><span>Wind</span><strong>{{ data.current.windspeed }} km/h</strong></div>
+          <div class="row"><span>Direction</span><strong>{{ data.current.winddirection }}°</strong></div>
+          <div class="row"><span>Time</span><strong>{{ data.current.time }}</strong></div>
+        </div>
+      {% endif %}
+    </div>
+  </body>
+  </html>
+
+
+
